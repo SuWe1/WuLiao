@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WuLiao</string>
+
+
+    <string name="title_robot">Turing</string>
+    <string name="title_set">Setting</string>
+    <string name="default_name">WuLiao</string>
+    <string name="nav_change_theme">切换主题</string>
+    <string name="nac_setting">设置</string>
+    <string name="nav_anout">关于我</string>
+    <string name="nav_menu_search_word">词典</string>
+    <string name="edit_hint">和我说点什么吧</string>
+</resources>
