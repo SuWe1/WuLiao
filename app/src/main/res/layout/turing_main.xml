@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/Alice_Blue"
     tools:context="com.wuliao.mvp.main.MainActivity">
 
     <!--<FrameLayout
@@ -14,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </FrameLayout>-->
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleView_chat"
         android:layout_width="match_parent"
@@ -24,9 +26,11 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp"
+        android:background="@color/civ_border_color"
+        android:weightSum="1">
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/edit_turing"
+            android:id="@+id/textinputlayout"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,6 +38,7 @@
             android:layout_marginBottom="1dp"
             app:hintAnimationEnabled="true">
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/edit_turing"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 style="@style/AppTheme.EditTheme"
@@ -43,6 +48,9 @@
                 android:maxLines="2"
                 android:textAllCaps="false"
                 android:textSize="20sp"
+                android:background="@null"
+                android:textColor="@color/Topaz"
+                android:textColorHint="@color/Pattens_Blue"
                 android:hint="@string/edit_hint"/>
         </android.support.design.widget.TextInputLayout>
         <Button
@@ -51,13 +59,21 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:visibility="gone"
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="1dp"/>
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="2dp"
+            android:text="@string/speak"
+            android:textColor="@color/Topaz"
+            android:textSize="15sp"
+            android:background="@drawable/btn_send_msg"
+            />
         <ImageView
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:id="@+id/img_turing"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_edid_send"
+            android:background="@drawable/ic_voice"
             android:layout_margin="2dp"
             style="@style/Widget.AppCompat.Button.Colored"/>
     </LinearLayout>

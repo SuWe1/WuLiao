@@ -5,7 +5,6 @@ package com.wuliao.mvp;
  */
 
 public interface BasePresenter {
-
     void subscribe();
 
     void unsubscribe();

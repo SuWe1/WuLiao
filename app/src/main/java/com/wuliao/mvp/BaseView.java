@@ -8,7 +8,7 @@ import android.view.View;
 
 public interface BaseView<T> {
 
-    void initViews(View view);
+    void initView(View view);
 
     void setPresenter(T presenter);
 
