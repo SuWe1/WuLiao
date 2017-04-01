@@ -2,6 +2,7 @@ package com.wuliao.mvp.main;
 
 import com.wuliao.mvp.BasePresenter;
 import com.wuliao.mvp.BaseView;
+import com.wuliao.source.ChatBean;
 
 /**
  * Created by Swy on 2017/3/31.
@@ -15,7 +16,7 @@ public interface MainContract {
     }
 
     interface View extends BaseView<Presenter>{
-        void showResponse();
+        void showResponse(ChatBean chatBean);
         void showNoNetError();
     }
 }

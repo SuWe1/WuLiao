@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (savedInstanceState!=null){
             mainFragment= (MainFragment) getSupportFragmentManager().getFragment(savedInstanceState,"MainFragment");
         }else {
-            mainFragment=MainFragment.newInstance();
+            mainFragment=MainFragment.newInstance(this);
         }
 
         if (savedInstanceState==null){

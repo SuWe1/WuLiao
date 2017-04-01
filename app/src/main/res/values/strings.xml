@@ -14,4 +14,5 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="speaking">语音识别中...</string>
     <string name="speak">点击说话</string>
+    <string name="fristdata">你好，我是Turing</string>
 </resources>

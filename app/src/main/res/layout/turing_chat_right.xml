@@ -15,6 +15,7 @@
         app:civ_border_color="@color/civ_border_color"/>
 
     <me.codeboy.android.aligntextview.CBAlignTextView
+        app:punctuationConvert="true"
         android:textIsSelectable="true"
         android:id="@+id/chat_text_right"
         android:layout_width="wrap_content"
@@ -32,5 +33,5 @@
         android:paddingRight="22dp"
         android:paddingTop="16dp"
         android:textColor="#FF000000"
-        android:textSize="15sp" />
+        android:textSize="14sp" />
 </RelativeLayout>

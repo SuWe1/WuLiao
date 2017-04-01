@@ -8,7 +8,7 @@ import android.net.NetworkInfo;
  * Created by 11033 on 2017/3/4.
  */
 
-public class Network {
+public class NetworkUtil {
     //是否连接网路
     public static boolean networkConnected(Context context){
         if (context!=null){
