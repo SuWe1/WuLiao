@@ -2,9 +2,11 @@ package com.wuliao.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.wuliao.R;
 import com.wuliao.interfaze.OnRecyclerViewOnClickListener;
@@ -14,7 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
-import me.codeboy.android.aligntextview.CBAlignTextView;
+
+import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
 /**
  * Created by Swy on 2017/4/1.
@@ -58,9 +61,15 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ChatBean item=list.get(position);
         if (holder instanceof LeftHolder){
-            ((LeftHolder) holder).cbAlignTextView.setText(item.getText());
+            if (item.getView() ==ChatBean.VIEW_TEXT){
+                ((LeftHolder) holder).textView.setText(item.getText());
+            }else if (item.getView()==ChatBean.VIEW_URL){
+
+            }else if (item.getView()==ChatBean.VIEW_LIST){
+
+            }
         }else if (holder instanceof RightHolder){
-            ((RightHolder) holder).cbAlignTextView.setText(item.getText());
+            ((RightHolder) holder).textView.setText(item.getText());
         }
     }
 
@@ -76,21 +85,21 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public void addMsg(ChatBean msg){
         list.add(msg);
-//        Log.d(TAG,"items.size = " + list.size());
+        Log.d(TAG,"list.size = " + list.size());
         notifyItemInserted(list.size());
     }
 
     class LeftHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         CircleImageView circleImageView;
-        CBAlignTextView cbAlignTextView;
+        TextView textView;
         OnRecyclerViewOnClickListener listener;
 
         public LeftHolder(View itemView,OnRecyclerViewOnClickListener listener) {
             super(itemView);
             this.listener=listener;
             circleImageView= (CircleImageView) itemView.findViewById(R.id.chat_img_left);
-            cbAlignTextView= (CBAlignTextView) itemView.findViewById(R.id.chat_text_left);
+            textView = (TextView) itemView.findViewById(R.id.chat_text_left);
             itemView.setOnClickListener(this);
         }
 
@@ -106,12 +115,12 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         OnRecyclerViewOnClickListener listener;
         CircleImageView circleImageView;
-        CBAlignTextView cbAlignTextView;
+        TextView textView;
 
         public RightHolder(View itemView,OnRecyclerViewOnClickListener listener) {
             super(itemView);
             circleImageView= (CircleImageView) itemView.findViewById(R.id.chat_img_right);
-            cbAlignTextView= (CBAlignTextView) itemView.findViewById(R.id.chat_text_right);
+            textView = (TextView) itemView.findViewById(R.id.chat_text_right);
             this.listener=listener;
             itemView.setOnClickListener(this);
         }

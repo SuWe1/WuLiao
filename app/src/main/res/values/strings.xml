@@ -15,4 +15,6 @@
     <string name="speaking">语音识别中...</string>
     <string name="speak">点击说话</string>
     <string name="fristdata">你好，我是Turing</string>
+    <string name="response_infonull_error">你说什么,我没听清啊</string>
+    <string name="response_exhasut_error">不好意思,今天妈妈不让我和别人说话了</string>
 </resources>

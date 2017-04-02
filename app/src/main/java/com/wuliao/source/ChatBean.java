@@ -5,12 +5,25 @@ package com.wuliao.source;
  */
 
 public class ChatBean {
-    public static final int TYPE_RIGHT = 1;
     public static final int TYPE_LEFT = 0;
+    public static final int TYPE_RIGHT = 1;
+
+    public static final int VIEW_TEXT=0;
+    public static final int VIEW_URL=1;
+    public static final int VIEW_LIST=2;
 
     private int type;
     private String text;
 
+    private int view;
+
+    public int getView() {
+        return view;
+    }
+
+    public void setView(int view) {
+        this.view = view;
+    }
 
     public int getType() {
         return type;

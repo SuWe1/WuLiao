@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/chat_img_left"
@@ -16,8 +16,7 @@
         app:civ_border_color="@color/civ_border_color"
         />
 
-    <me.codeboy.android.aligntextview.CBAlignTextView
-        app:punctuationConvert="true"
+    <TextView
         android:textIsSelectable="true"
         android:id="@+id/chat_text_left"
         android:layout_width="wrap_content"

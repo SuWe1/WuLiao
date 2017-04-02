@@ -6,21 +6,28 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.wuliao.R;
 import com.wuliao.adapter.ChatAdapter;
 import com.wuliao.source.ChatBean;
+
+import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
 /**
  * Created by Swy on 2017/3/31.
@@ -63,6 +70,7 @@ public class MainFragment  extends Fragment implements MainContract.View{
         initView(view);
         recycleview.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         adapter=new ChatAdapter(context);
+        recycleview.setItemAnimator(new DefaultItemAnimator());
         recycleview.setAdapter(adapter);
         initFristData();
         //显示菜单栏
@@ -88,6 +96,7 @@ public class MainFragment  extends Fragment implements MainContract.View{
         ChatBean bean=new ChatBean();
         bean.setText("你好,我是Turing");
         bean.setType(ChatBean.TYPE_LEFT);
+        bean.setView(ChatBean.VIEW_TEXT);
         adapter.addMsg(bean);
     }
     @Override
@@ -120,8 +129,25 @@ public class MainFragment  extends Fragment implements MainContract.View{
                 ChatBean bean=new ChatBean();
                 bean.setText(edit_turing.getText().toString());
                 bean.setType(ChatBean.TYPE_RIGHT);
+                bean.setView(ChatBean.VIEW_TEXT);
                 adapter.addMsg(bean);
                 presenter.sendMsg(edit_turing.getText().toString());
+            }
+        });
+        edit_turing.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId== EditorInfo.IME_ACTION_DONE){
+                    ChatBean bean=new ChatBean();
+                    String text=edit_turing.getText().toString();
+                    bean.setText(text);
+                    bean.setType(ChatBean.TYPE_RIGHT);
+                    bean.setView(ChatBean.VIEW_TEXT);
+                    adapter.addMsg(bean);
+                    presenter.sendMsg(text);
+                    edit_turing.setText("");
+                }
+                return false;
             }
         });
     }
@@ -136,8 +162,10 @@ public class MainFragment  extends Fragment implements MainContract.View{
     @Override
     public void showResponse(ChatBean chatBean) {
         ChatBean responseBean=new ChatBean();
+        Log.i(TAG, "mainfragment--showResponse:chatBean.text "+chatBean.getText());
         responseBean.setType(ChatBean.TYPE_LEFT);
         responseBean.setText(chatBean.getText());
+        responseBean.setView(chatBean.getView());
         adapter.addMsg(responseBean);
         recycleview.smoothScrollToPosition(adapter.getItemCount());
     }
