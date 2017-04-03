@@ -1,10 +1,23 @@
 package com.wuliao.mvp.main;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
+import com.iflytek.cloud.RecognizerResult;
+import com.iflytek.cloud.SpeechConstant;
+import com.iflytek.cloud.SpeechError;
+import com.iflytek.cloud.SpeechSynthesizer;
+import com.iflytek.cloud.SynthesizerListener;
+import com.iflytek.cloud.ui.RecognizerDialog;
+import com.iflytek.cloud.ui.RecognizerDialogListener;
 import com.wuliao.R;
 import com.wuliao.retrofit.RetrofitClient;
 import com.wuliao.source.ChatBean;
@@ -13,6 +26,10 @@ import com.wuliao.source.turing.TuringCookbook;
 import com.wuliao.source.turing.TuringNews;
 import com.wuliao.source.turing.TuringUrl;
 import com.wuliao.util.NetworkUtil;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.IOException;
 
@@ -34,6 +51,9 @@ public class MainPresenter implements MainContract.Presenter {
     private MainContract.View view;
 
     private static final String APIKey="65e6df4ce4d8425eae2c0e287138d165";
+
+    public static final int REQUEST_PERMISSION_CAMERA_CODE=1;//权限状态码
+
     //请求成功码 文本、链接、新闻、菜谱
     public static final int RESPONSE_CODE_TEXT=100000;
     public static final int RESPONSE_CODE_URL=200000;
@@ -141,6 +161,110 @@ public class MainPresenter implements MainContract.Presenter {
         }
         view.showResponse(chatbean);
     }
+
+    @Override
+    public void voiceToText() {
+        if (!(ContextCompat.checkSelfPermission(context, Manifest.permission.RECORD_AUDIO)== PackageManager.PERMISSION_GRANTED)){
+            ActivityCompat.requestPermissions((Activity) context,new String[]{Manifest.permission.RECORD_AUDIO},REQUEST_PERMISSION_CAMERA_CODE);
+        }
+        RecognizerDialog dialog=new RecognizerDialog(context,null);
+        dialog.setParameter(SpeechConstant.LANGUAGE,"");
+        dialog.setParameter(SpeechConstant.ACCENT,"");
+        dialog.setListener(new RecognizerDialogListener() {
+            @Override
+            public void onResult(RecognizerResult recognizerResult, boolean b) {
+                printResult(recognizerResult);
+            }
+
+            @Override
+            public void onError(SpeechError speechError) {
+
+            }
+        });
+        dialog.show();
+    }
+
+
+
+    //语音识别结果
+    private void printResult(RecognizerResult recognizerResult){
+        //识别完整结果由多段json结果合起来的
+        String text=parseIatResult(recognizerResult.getResultString());
+        /*StringBuilder sb=new StringBuilder();
+        sb.append(text);
+        Log.i(TAG, "printResult: "+sb.toString());*/
+        view.getVoice(text);
+    }
+
+    public static String parseIatResult(String json) {
+        StringBuffer ret = new StringBuffer();
+        try {
+            JSONTokener tokener = new JSONTokener(json);
+            JSONObject joResult = new JSONObject(tokener);
+
+            JSONArray words = joResult.getJSONArray("ws");
+            for (int i = 0; i < words.length(); i++) {
+                // 转写结果词，默认使用第一个结果
+                JSONArray items = words.getJSONObject(i).getJSONArray("cw");
+                JSONObject obj = items.getJSONObject(0);
+                ret.append(obj.getString("w"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ret.toString();
+    }
+
+    @Override
+    public void textToVoice(String text) {
+        SpeechSynthesizer mIts=SpeechSynthesizer.createSynthesizer(context,null);
+        mIts.setParameter(SpeechConstant.VOICE_NAME,"xiaoyan");
+        mIts.setParameter(SpeechConstant.SPEED,"50");
+        mIts.setParameter(SpeechConstant.VOLUME,"80");
+        mIts.startSpeaking(text,mSynListener);
+    }
+
+    SynthesizerListener mSynListener=new SynthesizerListener() {
+        //开始播放
+        @Override
+        public void onSpeakBegin() {
+
+        }
+        //缓冲进度回调
+        //percent为缓冲进度0~100，beginPos为缓冲音频在文本中开始位置，endPos表示缓冲音频在文本中结束位置，info为附加信息。
+        @Override
+        public void onBufferProgress(int i, int i1, int i2, String s) {
+
+        }
+        //暂停播放
+        @Override
+        public void onSpeakPaused() {
+
+        }
+        //恢复播放回调接口
+        @Override
+        public void onSpeakResumed() {
+
+        }
+        //播放进度回调
+        //percent为播放进度0~100,beginPos为播放音频在文本中开始位置，endPos表示播放音频在文本中结束位置.
+        @Override
+        public void onSpeakProgress(int i, int i1, int i2) {
+
+        }
+        //会话结束回调接口，没有错误时，error为null
+        @Override
+        public void onCompleted(SpeechError speechError) {
+
+        }
+        //会话事件回调接口
+        @Override
+        public void onEvent(int i, int i1, int i2, Bundle bundle) {
+
+        }
+    };
+
+
     @Override
     public void startReading(int position) {
 

@@ -11,6 +11,8 @@ import com.wuliao.source.ChatBean;
 public interface MainContract {
     interface Presenter extends BasePresenter{
         void sendMsg(String text);
+        void voiceToText();
+        void textToVoice(String text);
         void startReading(int position);
         void setting();
     }
@@ -18,5 +20,6 @@ public interface MainContract {
     interface View extends BaseView<Presenter>{
         void showResponse(ChatBean chatBean);
         void showNoNetError();
+        void getVoice(String text);
     }
 }

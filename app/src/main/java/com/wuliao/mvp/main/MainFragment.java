@@ -126,12 +126,11 @@ public class MainFragment  extends Fragment implements MainContract.View{
         btn_turing_voice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ChatBean bean=new ChatBean();
-                bean.setText(edit_turing.getText().toString());
-                bean.setType(ChatBean.TYPE_RIGHT);
-                bean.setView(ChatBean.VIEW_TEXT);
-                adapter.addMsg(bean);
-                presenter.sendMsg(edit_turing.getText().toString());
+                presenter.voiceToText();
+                btn_turing_voice.setVisibility(View.GONE);
+                textinputlayout.setVisibility(View.VISIBLE);
+                img_turing.setBackgroundResource(R.drawable.ic_voice);
+                voiceInput=!voiceInput;
             }
         });
         edit_turing.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -168,6 +167,11 @@ public class MainFragment  extends Fragment implements MainContract.View{
         responseBean.setView(chatBean.getView());
         adapter.addMsg(responseBean);
         recycleview.smoothScrollToPosition(adapter.getItemCount());
+    }
+
+    @Override
+    public void getVoice(String text) {
+        edit_turing.append(text);
     }
 
     @Override
