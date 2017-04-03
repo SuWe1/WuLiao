@@ -165,8 +165,10 @@ public class MainFragment  extends Fragment implements MainContract.View{
         responseBean.setType(ChatBean.TYPE_LEFT);
         responseBean.setText(chatBean.getText());
         responseBean.setView(chatBean.getView());
+        responseBean.setUrl(chatBean.getUrl());
         adapter.addMsg(responseBean);
         recycleview.smoothScrollToPosition(adapter.getItemCount());
+//        presenter.textToVoice(chatBean.getText());
     }
 
     @Override

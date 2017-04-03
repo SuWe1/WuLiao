@@ -38,7 +38,7 @@ public class GsonResponseBodyConverter<T> implements Converter<ResponseBody,T> {
         if (code== RESPONSE_KEY_ERROR|code ==RESPONSE_INFONULL_ERROR|code==RESPONSE_EXHASUT_ERROR|code==RESPONSE_FORMAT_ERROR){
             throw new ApiException(code);
         }else {
-                Object data=turingBean.getData();
+                Object data=turingBean.getUrl();
                 response=data.toString();
             return adapter.fromJson(response);
         }

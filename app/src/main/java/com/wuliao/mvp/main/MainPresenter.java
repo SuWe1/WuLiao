@@ -10,7 +10,6 @@ import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.iflytek.cloud.RecognizerResult;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechError;
@@ -22,18 +21,12 @@ import com.wuliao.R;
 import com.wuliao.retrofit.RetrofitClient;
 import com.wuliao.source.ChatBean;
 import com.wuliao.source.TuringBean;
-import com.wuliao.source.turing.TuringCookbook;
-import com.wuliao.source.turing.TuringNews;
-import com.wuliao.source.turing.TuringUrl;
 import com.wuliao.util.NetworkUtil;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import java.io.IOException;
-
-import okhttp3.ResponseBody;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -96,8 +89,8 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void onNext(TuringBean<List<TuringNews>> listTuringBean) {
-    Log.i(TAG, "onNext: "+listTuringBean.getCode()+listTuringBean.getText()+listTuringBean.getData());
-    List<TuringNews> news=listTuringBean.getData();
+    Log.i(TAG, "onNext: "+listTuringBean.getCode()+listTuringBean.getText()+listTuringBean.getUrl());
+    List<TuringNews> news=listTuringBean.getUrl();
     Log.i(TAG, "onNext: "+news.size());
     }
     }
@@ -106,10 +99,10 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void sendMsg(String text) {
         if (NetworkUtil.networkConnected(context)){
-            RetrofitClient.getTuringApi().getResponseResponseBody(APIKey,text)
+            RetrofitClient.getTuringApi().getResponse(APIKey,text)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Subscriber<ResponseBody>() {
+                    .subscribe(new Subscriber<TuringBean>() {
                         @Override
                         public void onCompleted() {
 
@@ -117,20 +110,13 @@ public class MainPresenter implements MainContract.Presenter {
 
                         @Override
                         public void onError(Throwable e) {
-                            Log.i(TAG, "onError: "+e.getMessage());
+
                         }
 
                         @Override
-                        public void onNext(ResponseBody responseBody) {
-                            Log.i(TAG, "onNext: "+responseBody.toString());
-                            TuringBean turing= null;
-                            try {
-                                turing = gson.fromJson(responseBody.string(),TuringBean.class);
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                            getResult(turing);
-                            Log.i(TAG, "onNext: "+turing.getCode()+"    "+turing.getText());
+                        public void onNext(TuringBean turingBean) {
+                            getResult(turingBean);
+                            Log.i(TAG, "onNext: code: "+turingBean.getCode()+"  text:  "+turingBean.getText()+" url:  "+turingBean.getUrl());
                         }
                     });
         }else {
@@ -143,15 +129,10 @@ public class MainPresenter implements MainContract.Presenter {
         ChatBean chatbean=new ChatBean();
         if (code==RESPONSE_CODE_TEXT){
             chatbean.setText(turing.getText());
-            view.showResponse(chatbean);
-        }else if (code==RESPONSE_CODE_URL){
-            TuringUrl turingurl=gson.fromJson(String.valueOf(turing.getCode()),TuringUrl.class);
+        }else if (code==RESPONSE_CODE_URL | code==RESPONSE_CODE_COOKBOOK){
             chatbean.setView(VIEW_URL);
-            chatbean.setText(turingurl.getUrl());
-        }else if (code==RESPONSE_CODE_NEWS){
-            TuringNews turingnews=gson.fromJson((JsonElement) turing.getData(),TuringNews.class);
-        }else if (code==RESPONSE_CODE_COOKBOOK){
-            TuringCookbook turingcookbook=gson.fromJson((JsonElement) turing.getData(),TuringCookbook.class);
+            chatbean.setText(turing.getText());
+            chatbean.setUrl(turing.getUrl());
         }else if (code==RESPONSE_EXHASUT_ERROR){
             chatbean.setText(String.valueOf(R.string.response_exhasut_error));
             chatbean.setView(VIEW_TEXT);

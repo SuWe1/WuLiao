@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wuliao">
 
-    <meta-data android:name="IFLYTEK_APPKEY" android:value="'58dce383'"/>
-    <meta-data android:name="IFLYTEK_CHANNEL" android:value="吾聊Android客户端"/>
+    <meta-url android:name="IFLYTEK_APPKEY" android:value="'58dce383'"/>
+    <meta-url android:name="IFLYTEK_CHANNEL" android:value="吾聊Android客户端"/>
 
     <!-- 科大讯飞语音需要的权限-->
     <!--连接网络权限，用于执行云端语音能力 -->

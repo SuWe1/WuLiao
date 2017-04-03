@@ -21,7 +21,7 @@ public class RetrofitClient {
         if (turingApi==null){
             Retrofit retrofit=new Retrofit.Builder()
                     .baseUrl(baseTuringUrl)
-//                    .addConverterFactory(gsonConverterFactory)
+                    .addConverterFactory(gsonConverterFactory)
 //                    .addConverterFactory(ResponseConvertFactory.create())
                     .addCallAdapterFactory(rxJavaCallAdapterFactory)
                     .build();

@@ -64,7 +64,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             if (item.getView() ==ChatBean.VIEW_TEXT){
                 ((LeftHolder) holder).textView.setText(item.getText());
             }else if (item.getView()==ChatBean.VIEW_URL){
-
+                ((LeftHolder) holder).textView.setText(item.getUrl());
             }else if (item.getView()==ChatBean.VIEW_LIST){
 
             }
