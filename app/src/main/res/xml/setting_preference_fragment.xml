@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/setting_chat">
+        <CheckBoxPreference android:title="@string/setting_isVoice"
+            android:key="isVoice"
+            android:defaultValue="true"
+            android:summary="@string/setting_isVoice_summarg"/>
+        <ListPreference android:title="@string/setting_voice_velocity"
+            android:key="voice_velocity"
+            android:entries="@array/voice_velocity"
+            android:entryValues="@array/voice_velocity"
+            android:defaultValue="50"/>
+        <ListPreference android:title="@string/setting_voice_volume"
+            android:key="voice_volume"
+            android:entries="@array/voice_volume"
+            android:entryValues="@array/voice_volume"
+            android:defaultValue="50"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/setting_other_set">
+        <Preference android:title="@string/setting_clear_cache"
+            android:key="clear_cache"/>
+    </PreferenceCategory>
+</PreferenceScreen>

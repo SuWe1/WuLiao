@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="voice_velocity">
+        <item>30</item>
+        <item>50</item>
+        <item>80</item>
+    </string-array>
+</resources>

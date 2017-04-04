@@ -1,11 +1,8 @@
-package com.wuliao.retrofit;
+package com.wuliao.retrofit.useless;
 
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.reflect.TypeToken;
-import com.wuliao.retrofit.annotaation.CookBook;
-import com.wuliao.retrofit.annotaation.News;
-import com.wuliao.retrofit.annotaation.Url;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
@@ -46,7 +43,7 @@ public class ResponseConvertFactory extends Converter.Factory {
     public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations,
                                                             Retrofit retrofit) {
         String name="Text";//默认
-        for (Annotation annotation: annotations){
+        /*for (Annotation annotation: annotations){
             if (annotation instanceof News){
                 name=((News) annotation).value();
                 break;
@@ -56,7 +53,7 @@ public class ResponseConvertFactory extends Converter.Factory {
             }else if (annotation instanceof CookBook){
                 name=((CookBook) annotation).value();
             }
-        }
+        }*/
         TypeAdapter<?> adapter = gson.getAdapter(TypeToken.get(type));
         return new GsonResponseBodyConverter<>(gson, adapter,name);
     }

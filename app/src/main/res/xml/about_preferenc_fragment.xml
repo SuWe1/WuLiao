@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/app_name">
+        <Preference android:title="@string/app_name"/>
+        <Preference android:title="@string/about_version"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/about_anthor">
+        <Preference android:title="@string/about_name"
+            android:summary="@string/about_please"
+            android:key="author"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/about_support">
+        <Preference android:title="@string/about_bug"
+            android:key="commit_bug"/>
+        <Preference android:title="@string/about_email"
+            android:summary="@string/about_commit_bug"/>
+        <Preference android:title="@string/about_thank"
+            android:summary="@string/anout_thank_gank"/>
+    </PreferenceCategory>
+</PreferenceScreen>

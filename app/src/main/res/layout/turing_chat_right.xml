@@ -10,11 +10,12 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginRight="16dp"
-        android:src="@drawable/ic_placeholder"
+        android:src="@drawable/right_logo"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/civ_border_color"/>
 
     <TextView
+        android:clickable="true"
         android:textIsSelectable="true"
         android:id="@+id/chat_text_right"
         android:layout_width="wrap_content"

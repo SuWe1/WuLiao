@@ -17,4 +17,25 @@
     <string name="fristdata">你好，我是Turing</string>
     <string name="response_infonull_error">你说什么,我没听清啊</string>
     <string name="response_exhasut_error">不好意思,今天妈妈不让我和别人说话了</string>
+
+
+    <string name="setting_chat">语音设置</string>
+    <string name="setting_isVoice">开启</string>
+    <string name="setting_isVoice_summarg">开启语音播放</string>
+    <string name="setting_voice_velocity">语速</string>
+    <string name="setting_voice_volume">音量</string>
+    <string name="setting_other_set">其他设置</string>
+    <string name="setting_clear_cache">清除缓存</string>
+
+    <string name="about">关于</string>
+    <string name="about_version">版本:V1.0</string>
+    <string name="about_please">大三汪一只</string>
+    <string name="about_name">Swy</string>
+    <string name="about_anthor">关于我</string>
+    <string name="about_support">反馈/支持</string>
+    <string name="about_bug">反馈Bug</string>
+    <string name="about_commit_bug">yeshuwei.swy@gmail.com</string>
+    <string name="about_email">我的联系方式</string>
+    <string name="about_thank">致谢</string>
+    <string name="anout_thank_gank">致谢开发过程中指点迷津的人</string>
 </resources>

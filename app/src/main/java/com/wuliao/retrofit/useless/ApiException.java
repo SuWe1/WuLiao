@@ -1,4 +1,4 @@
-package com.wuliao.retrofit;
+package com.wuliao.retrofit.useless;
 
 /**
  * Created by Swy on 2017/4/1.

@@ -1,4 +1,4 @@
-package com.wuliao.retrofit;
+package com.wuliao.retrofit.useless;
 
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;

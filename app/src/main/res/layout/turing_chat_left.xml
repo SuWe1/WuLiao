@@ -11,12 +11,13 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="16dp"
-        android:src="@drawable/ic_placeholder"
+        android:src="@drawable/left_logo"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/civ_border_color"
         />
 
     <TextView
+        android:clickable="true"
         android:textIsSelectable="true"
         android:id="@+id/chat_text_left"
         android:layout_width="wrap_content"
