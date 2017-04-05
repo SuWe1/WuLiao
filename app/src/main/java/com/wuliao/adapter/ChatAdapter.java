@@ -1,17 +1,21 @@
 package com.wuliao.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.customtabs.CustomTabsIntent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.wuliao.R;
 import com.wuliao.interfaze.OnRecyclerViewOnClickListener;
+import com.wuliao.mvp.detail.url.WebActivity;
 import com.wuliao.source.ChatBean;
+import com.wuliao.util.NetworkUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,16 +64,38 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ChatBean item=list.get(position);
+        final ChatBean item=list.get(position);
         if (holder instanceof LeftHolder){
             if (item.getView() ==ChatBean.VIEW_TEXT){
                 ((LeftHolder) holder).textView.setText(item.getText());
             }else if (item.getView()==ChatBean.VIEW_URL){
                 ((LeftHolder) holder).textView.setText("[点击查看]");
+                ((LeftHolder) holder).textView.setTextColor(context.getResources().getColor(R.color.colorPrimary));
                 ((LeftHolder) holder).textView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(context,"url is click",Toast.LENGTH_SHORT).show();
+                        if (NetworkUtil.isInstallChrome(context)){
+                            // 使用Chrome Custom Tab打开
+                            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                            builder.setToolbarColor(context.getResources().getColor(R.color.colorPrimary));
+                            CustomTabsIntent customTabsIntent = builder.build();
+                            customTabsIntent.launchUrl(context, Uri.parse(item.getUrl()));
+                            Log.i(TAG, "onClick: open in chrome");
+//                            Toast.makeText(context,"open in chrome",Toast.LENGTH_SHORT).show();
+                        }else {
+                            //使用自定义的WebViewActivit打开
+                            Intent intent=new Intent(context, WebActivity.class);
+                            intent.putExtra("url",item.getUrl());
+                            intent.putExtra("title",item.getText());
+                            /**
+                             * Content的startActivity方法，需要开启一个新的task。如果使用 Activity的startActivity方法，
+                             * 不会有任何限制，因为Activity继承自Context，重载了startActivity方法。
+                             */
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(intent);
+//                            Toast.makeText(context,"open in webview",Toast.LENGTH_SHORT).show();
+                        }
+
                     }
                 });
             }else if (item.getView()==ChatBean.VIEW_LIST){

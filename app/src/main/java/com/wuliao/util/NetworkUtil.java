@@ -1,8 +1,12 @@
 package com.wuliao.util;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
+import java.util.List;
 
 /**
  * Created by 11033 on 2017/3/4.
@@ -45,5 +49,21 @@ public class NetworkUtil {
             }
         }
         return false;
+    }
+
+    public static boolean isInstallChrome(Context context){
+        //检查是否安装Chrome
+        String packageName = "com.android.chrome";
+        Intent browserIntent = new Intent();
+        browserIntent.setPackage(packageName);
+        List<ResolveInfo> activitiesList = context.getPackageManager().queryIntentActivities(
+                browserIntent, -1);
+        if (activitiesList.size() > 0){
+            // 使用Chrome Custom Tab打开
+            return true;
+        }else {
+            //使用自定义的WebViewActivit打开
+            return false;
+        }
     }
 }

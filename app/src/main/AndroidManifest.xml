@@ -38,6 +38,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".mvp.setting.SettingActivity"/>
+        <activity android:name=".mvp.detail.url.WebActivity"/>
     </application>
 
 </manifest>
