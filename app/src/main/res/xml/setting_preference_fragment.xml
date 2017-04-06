@@ -6,6 +6,11 @@
             android:key="isVoice"
             android:defaultValue="true"
             android:summary="@string/setting_isVoice_summarg"/>
+        <ListPreference android:title="@string/seeting_voice_man"
+            android:key="voice_man"
+            android:entries="@array/voice_man"
+            android:entryValues="@array/voice_mans"
+            android:defaultValue="xiaoyan"/>
         <ListPreference android:title="@string/setting_voice_velocity"
             android:key="voice_velocity"
             android:entries="@array/voice_velocity"
@@ -15,7 +20,7 @@
             android:key="voice_volume"
             android:entries="@array/voice_volume"
             android:entryValues="@array/voice_volume"
-            android:defaultValue="50"/>
+            android:defaultValue="80"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/setting_other_set">
         <Preference android:title="@string/setting_clear_cache"

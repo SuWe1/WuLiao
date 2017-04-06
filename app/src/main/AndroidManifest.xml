@@ -39,6 +39,7 @@
         </activity>
         <activity android:name=".mvp.setting.SettingActivity"/>
         <activity android:name=".mvp.detail.url.WebActivity"/>
+        <activity android:name=".mvp.about.AboutPreferenceActivity"/>
     </application>
 
 </manifest>

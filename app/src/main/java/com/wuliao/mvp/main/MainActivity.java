@@ -1,5 +1,6 @@
 package com.wuliao.mvp.main;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -14,6 +15,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.wuliao.R;
+import com.wuliao.mvp.about.AboutPreferenceActivity;
+import com.wuliao.mvp.setting.SettingActivity;
 
 import static com.wuliao.mvp.main.MainPresenter.REQUEST_PERMISSION_CAMERA_CODE;
 
@@ -91,9 +94,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if (id==R.id.nav_change_theme){
 
         }else if (id==R.id.nav_settings){
-
+            startActivity(new Intent(this, SettingActivity.class));
         }else if (id==R.id.nav_about){
-
+            startActivity(new Intent(this, AboutPreferenceActivity.class));
         }
         return true;
     }

@@ -3,6 +3,7 @@ package com.wuliao.mvp.main;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -42,6 +43,7 @@ import static com.wuliao.source.ChatBean.VIEW_URL;
 public class MainPresenter implements MainContract.Presenter {
     private Context context;
     private MainContract.View view;
+    private SharedPreferences sp;
 
     private static final String APIKey="65e6df4ce4d8425eae2c0e287138d165";
 
@@ -63,6 +65,7 @@ public class MainPresenter implements MainContract.Presenter {
         this.context = context;
         this.view = view;
         this.view.setPresenter(this);
+        sp=context.getSharedPreferences("user_setting",Context.MODE_PRIVATE);
     }
 
     @Override
@@ -149,8 +152,9 @@ public class MainPresenter implements MainContract.Presenter {
             ActivityCompat.requestPermissions((Activity) context,new String[]{Manifest.permission.RECORD_AUDIO},REQUEST_PERMISSION_CAMERA_CODE);
         }
         RecognizerDialog dialog=new RecognizerDialog(context,null);
-        dialog.setParameter(SpeechConstant.LANGUAGE,"");
-        dialog.setParameter(SpeechConstant.ACCENT,"");
+        dialog.setParameter(SpeechConstant.DOMAIN, "iat");
+        dialog.setParameter(SpeechConstant.LANGUAGE,"zh_cn");
+        dialog.setParameter(SpeechConstant.ACCENT,"mandarin ");
         dialog.setListener(new RecognizerDialogListener() {
             @Override
             public void onResult(RecognizerResult recognizerResult, boolean b) {
@@ -198,10 +202,13 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void textToVoice(String text) {
+        String volume=sp.getString("voice_volume","80");
+        String speed=sp.getString("voice_velocity","50");
+        String name=sp.getString("voice_man","xiaoyan");
         SpeechSynthesizer mIts=SpeechSynthesizer.createSynthesizer(context,null);
-        mIts.setParameter(SpeechConstant.VOICE_NAME,"xiaoyan");
-        mIts.setParameter(SpeechConstant.SPEED,"50");
-        mIts.setParameter(SpeechConstant.VOLUME,"80");
+        mIts.setParameter(SpeechConstant.VOICE_NAME,name);
+        mIts.setParameter(SpeechConstant.SPEED,speed);
+        mIts.setParameter(SpeechConstant.VOLUME,volume);
         mIts.startSpeaking(text,mSynListener);
     }
 

@@ -33,6 +33,8 @@
     <string name="setting_voice_volume">音量</string>
     <string name="setting_other_set">其他设置</string>
     <string name="setting_clear_cache">清除缓存</string>
+    <string name="setting_title">设置</string>
+    <string name="seeting_voice_man">发音人</string>
 
     <string name="about">关于</string>
     <string name="about_version">版本:V1.0</string>
@@ -45,5 +47,17 @@
     <string name="about_email">我的联系方式</string>
     <string name="about_thank">致谢</string>
     <string name="anout_thank_gank">致谢开发过程中指点迷津的人</string>
+
+
     <string name="copied_to_clipboard">复制成功</string>
+    <string name="clear_success">清除成功</string>
+    <string name="sendto">mailto:yeshuwei911@gmail.com</string>
+    <string name="mail_topic">Gank使用反馈</string>
+    <string name="device_model">手机型号</string>
+    <string name="sdk_version">SDK版本</string>
+    <string name="easter_egg">彩蛋</string>
+    <string name="easter_egg_content">点这么多下我名字,是不是觉得我比较帅!</string>
+    <string name="sure">肯定</string>
+    <string name="yes">必须</string>
+    <string name="no_app_store_found">没有邮件类App</string>
 </resources>

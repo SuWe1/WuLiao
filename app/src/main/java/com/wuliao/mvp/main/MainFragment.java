@@ -1,6 +1,7 @@
 package com.wuliao.mvp.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
@@ -25,6 +26,8 @@ import android.widget.TextView;
 
 import com.wuliao.R;
 import com.wuliao.adapter.ChatAdapter;
+import com.wuliao.app.App;
+import com.wuliao.mvp.setting.SettingActivity;
 import com.wuliao.source.ChatBean;
 
 import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
@@ -87,7 +90,7 @@ public class MainFragment  extends Fragment implements MainContract.View{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.turing_setting){
-
+            startActivity(new Intent(context, SettingActivity.class));
         }
         return true;
     }
@@ -168,7 +171,9 @@ public class MainFragment  extends Fragment implements MainContract.View{
         responseBean.setUrl(chatBean.getUrl());
         adapter.addMsg(responseBean);
         recycleview.smoothScrollToPosition(adapter.getItemCount());
-//        presenter.textToVoice(chatBean.getText());
+        if (App.VOICE_IS_OPEN){
+            presenter.textToVoice(chatBean.getText());
+        }
     }
 
     @Override

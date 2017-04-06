@@ -13,10 +13,12 @@ public interface SettingContract {
     interface Presenter extends BasePresenter{
         void setVoiceVelocity(Preference preference, Object newValue);
         void setVoiceVolume(Preference preference,Object newValue);
+        void setVoiceMan(Preference preference,Object newValue);
         void setVoiceIsOpen(Preference preference);
         void cleanCache();
         String getVolumeSummary();
         String getVelocitySummary();
+        String getManSummary();
     }
 
     interface View extends BaseView<Presenter>{

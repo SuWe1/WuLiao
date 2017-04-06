@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="voice_man">
+        <item>小燕</item>
+        <item>小宇</item>
+    </string-array>
+    <string-array name="voice_mans">
+        <item>xiaoyan</item>
+        <item>xiaoyu</item>
+    </string-array>
+</resources>

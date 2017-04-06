@@ -80,6 +80,17 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                             builder.setToolbarColor(context.getResources().getColor(R.color.colorPrimary));
                             CustomTabsIntent customTabsIntent = builder.build();
                             customTabsIntent.launchUrl(context, Uri.parse(item.getUrl()));
+                            /*if (context instanceof Activity) {
+                                customTabsIntent.launchUrl((Activity) context, Uri.parse(item.getUrl()));
+                            } else {
+                                Intent intent = customTabsIntent.intent;
+                                intent.setData(Uri.parse(item.getUrl()));
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                                    context.startActivity(intent, customTabsIntent.startAnimationBundle);
+                                } else {
+                                    context.startActivity(intent);
+                                }
+                            }*/
                             Log.i(TAG, "onClick: open in chrome");
 //                            Toast.makeText(context,"open in chrome",Toast.LENGTH_SHORT).show();
                         }else {

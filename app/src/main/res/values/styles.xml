@@ -6,8 +6,17 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/myPreferenceScreen</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--解决java.lang.IllegalStateException: Must specify preferenceTheme in theme
+       PreferenceFragmentCompat 需要 preferenceTheme 来设置-->
+    <style name="myPreferenceScreen" parent="PreferenceThemeOverlay.v14.Material">
+        <item name="android:fadeScrollbars">true</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:scrollbarFadeDuration">1</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -20,5 +29,6 @@
     <style name="AppTheme.EditTheme" parent="Theme.AppCompat.DayNight">
         <item name="colorAccent">@color/Pattens_Blue</item>
     </style>
+
 
 </resources>
