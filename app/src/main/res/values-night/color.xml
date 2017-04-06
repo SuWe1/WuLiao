@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#35464e</color>
+    <color name="colorPrimaryDark">#212a2f</color>
+    <color name="colorAccent">#212a2f</color>
+    <color name="Alice_Blue">#2C373B</color>
+    <color name="Pattens_Blue">#303C51</color>
+    <color name="Link_Water">#303C51</color>
+    <color name="Topaz">#4172C2</color>
+    <color name="textColorPrimary">#616161</color>
+    <color name="civ_border_color">#212a2f</color>
+</resources>

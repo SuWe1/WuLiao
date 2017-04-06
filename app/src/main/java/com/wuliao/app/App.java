@@ -1,6 +1,7 @@
 package com.wuliao.app;
 
 import android.app.Application;
+import android.support.v7.app.AppCompatDelegate;
 
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
@@ -19,6 +20,11 @@ public class App extends Application {
             VOICE_IS_OPEN=true;
         }else {
             VOICE_IS_OPEN=false;
+        }
+        if (getSharedPreferences("user_setting",MODE_PRIVATE).getInt("theme", 0) == 0) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
     }
 }

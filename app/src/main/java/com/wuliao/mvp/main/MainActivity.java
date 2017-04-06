@@ -1,7 +1,10 @@
 package com.wuliao.mvp.main;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
@@ -11,8 +14,10 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.wuliao.R;
 import com.wuliao.mvp.about.AboutPreferenceActivity;
@@ -78,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
+        //如果该Fragment对象被添加到了它的Activity中，那么它返回true，否则返回false
         if (mainFragment.isAdded()){
             getSupportFragmentManager().putFragment(outState,"MainFragment",mainFragment);
         }
@@ -92,7 +98,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if (id==R.id.nav_search_word){
 
         }else if (id==R.id.nav_change_theme){
+            drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+                @Override
+                public void onDrawerSlide(View drawerView, float slideOffset) {
+                    super.onDrawerSlide(drawerView, slideOffset);
+                }
 
+                @Override
+                public void onDrawerOpened(View drawerView) {
+                    super.onDrawerOpened(drawerView);
+                }
+
+                @Override
+                public void onDrawerClosed(View drawerView) {
+                    super.onDrawerClosed(drawerView);
+                    SharedPreferences sp=getSharedPreferences("user_setting", Context.MODE_PRIVATE);
+                    //检车当前主题模式
+                    int mode =getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+                    if (mode==Configuration.UI_MODE_NIGHT_YES){
+                        sp.edit().putInt("theme",0).apply();
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    }else if (mode== Configuration.UI_MODE_NIGHT_NO){
+                        sp.edit().putInt("theme",1).apply();
+                        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    }
+                    getWindow().setWindowAnimations(R.style.WindowsAnimationonChange);
+//                    recreate();
+                    Intent intent=getIntent();
+                    finish();
+                    startActivity(intent);
+                }
+
+                @Override
+                public void onDrawerStateChanged(int newState) {
+                    super.onDrawerStateChanged(newState);
+                }
+            });
         }else if (id==R.id.nav_settings){
             startActivity(new Intent(this, SettingActivity.class));
         }else if (id==R.id.nav_about){

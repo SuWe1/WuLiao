@@ -5,10 +5,9 @@
     <color name="colorAccent">#42A5F5</color>
     <color name="Alice_Blue">#F9FBFC </color>
     <color name="Pattens_Blue">#DCE5EC</color>
-    <color name="Hawkes_Blue">#DBDDE1</color>
     <color name="Link_Water">#CFD3D7</color>
     <color name="Topaz">#8A898B</color>
+    <color name="Hawkes_Blue">#DBDDE1</color>
     <color name="textColorPrimary">#616161</color>
-
     <color name="civ_border_color">#fff</color>
 </resources>

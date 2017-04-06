@@ -30,5 +30,11 @@
         <item name="colorAccent">@color/Pattens_Blue</item>
     </style>
 
+    <!--转换动画-->
+    <style name="WindowsAnimationonChange">
+        <item name="android:windowEnterAnimation">@anim/window_in</item>
+        <item name="android:windowExitAnimation">@anim/window_out</item>
+    </style>
+
 
 </resources>

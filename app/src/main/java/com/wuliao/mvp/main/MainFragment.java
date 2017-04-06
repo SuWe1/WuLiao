@@ -51,7 +51,6 @@ public class MainFragment  extends Fragment implements MainContract.View{
 
     private boolean voiceInput=true;
 
-
     public MainFragment(Context context) {
         this.context=context;
     }
