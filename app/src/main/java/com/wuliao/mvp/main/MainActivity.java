@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (savedInstanceState!=null){
             mainFragment= (MainFragment) getSupportFragmentManager().getFragment(savedInstanceState,"MainFragment");
         }else {
-            mainFragment=MainFragment.newInstance(this);
+            mainFragment=MainFragment.newInstance();
+            mainFragment.setContext(this);
         }
 
         if (savedInstanceState==null){
@@ -53,8 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         String action=getIntent().getAction();
         if (action.equals(ACTION_SEARCH_WORD)){
-
-            navigationView.setCheckedItem(R.id.nav_search_word);
+//            navigationView.setCheckedItem(R.id.nav_search_word);
         }else {
             showMainFragment();
             navigationView.setCheckedItem(R.id.nav_robot);
@@ -95,9 +95,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id=item.getItemId();
         if (id==R.id.nav_robot){
             showMainFragment();
-        }else if (id==R.id.nav_search_word){
+        }/*else if (id==R.id.nav_search_word){
 
-        }else if (id==R.id.nav_change_theme){
+        }*/else if (id==R.id.nav_change_theme){
             drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
                 @Override
                 public void onDrawerSlide(View drawerView, float slideOffset) {

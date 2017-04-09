@@ -51,12 +51,19 @@ public class MainFragment  extends Fragment implements MainContract.View{
 
     private boolean voiceInput=true;
 
+    public MainFragment() {
+    }
+
     public MainFragment(Context context) {
         this.context=context;
     }
 
-    public static MainFragment newInstance(Context context) {
-        return  new MainFragment(context);
+    //http://stackoverflow.com/questions/29762949/error-this-fragment-should-provide-a-default-constructor-a-public-constructor
+    public void  setContext(Context context){
+        this.context=context;
+    }
+    public static MainFragment newInstance() {
+        return  new MainFragment();
     }
 
     @Override

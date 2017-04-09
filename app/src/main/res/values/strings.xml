@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">吾聊</string>
     <string name="robot_name">Turing</string>
-
+    <string name="home_pager">首页</string>
     <string name="title_robot">Turing</string>
     <string name="title_set">Setting</string>
     <string name="default_name">WuLiao</string>
