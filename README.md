@@ -1,6 +1,6 @@
 ## WuLiao Android App
 ![logo](https://github.com/yeshuwei/WuLiao/blob/master/art/wuliao_logo128.png)<br>
-English | [中文版]()<br>
+English | [中文版](https://github.com/yeshuwei/WuLiao/blob/master/README_CN.md)<br>
 <br>
 Wuliao is an AI-based chat assistant, which can accompany you, amuse you, help you search information and answer your question. Check air or bus ticket? Want to know the weather? Ask for language translation? Or find a funny story for entertainment? All these could be done for you and there are even more functions waiting for exploring.
 ### Features
