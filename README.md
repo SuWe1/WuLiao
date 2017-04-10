@@ -1,32 +1,35 @@
-## 吾聊 Android App
+## WuLiao Android App
 ![logo](https://github.com/yeshuwei/WuLiao/blob/master/art/wuliao_logo128.png)<br>
-吾聊是一款基于智能机器的聊天小助手，它可以陪你聊天逗你开心，可以帮你查找资料，解答问题。查查机票车票？问问天气？英语不懂？或者来个笑话寻寻乐也都是它能做到的。更多功能等待你的揭晓。
-### 特征
-* 具有约三十项能力扩展，智能学习能力。
-* 语音输入，语音播放
-* 支持主题模式更改保护您的眼睛
-### 截图
-### 在Android Studio中打开
-Clone仓库：<br>
+English | [中文版]()<br>
+<br>
+Wuliao is an AI-based chat assistant, which can accompany you, amuse you, help you search information and answer your question. Check air or bus ticket? Want to know the weather? Ask for language translation? Or find a funny story for entertainment? All these could be done for you and there are even more functions waiting for exploring.
+### Features
+* About thirty abilities and intelligent learning ability
+* Voice input , voice playback
+* Support for changes theme mode
+### Screenshots
+![](https://github.com/yeshuwei/WuLiao/blob/master/art/jietu1.png)![](https://github.com/yeshuwei/WuLiao/blob/master/art/jietu2.PNG)<br>
+![](https://github.com/yeshuwei/WuLiao/blob/master/art/jietu3.PNG)![](https://github.com/yeshuwei/WuLiao/blob/master/art/jietu4.PNG)<br>
+### Open in Android Studio
+Clone the repository：<br>
 <br>
 ``
 git clone https://github.com/yeshuwei/WuLiao
 ``<br>
 <br>
-获取Master分支：<br>
+check out the Master branch：<br>
 <br>
 ``
-git checkout master
+git checkout master 
 ``<br>
 <br>
-Note:如果需要查看其它分支，请将master替换为其它分支的名称.
+Note:If you want to review a different branch,replace the **master** with the name you want to checout<br>
+Finally open the wuliao/ directory in Android Studio
 
-最后在Android Studio中打开wuliao/目录。
+### Download APK
+(App are not shelves now)
 
-### 下载
-(暂未上线)
-
-### 相关开源项目
+### Libraries used in this App
 
 * [RxJava](https://github.com/ReactiveX/RxJava)
 * [RxAndroid](https://github.com/ReactiveX/RxAndroid)
@@ -34,8 +37,8 @@ Note:如果需要查看其它分支，请将master替换为其它分支的名称
 * [CircleImageView](https://github.com/hdodenhof/CircleImageView)
 * [Gson](https://github.com/google/gson)
 
-### 致谢
+### Thanks to
 * [图灵机器人](http://www.tuling123.com/)
 * [Google](https://github.com/googlesamples)-[android-architecture
 ](https://github.com/googlesamples/android-architecture)
-* 开发过程中热心为我解答的人
+* Other people who helped me solve the problem 
