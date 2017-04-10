@@ -38,7 +38,7 @@ Finally open the wuliao/ directory in Android Studio
 * [Gson](https://github.com/google/gson)
 
 ### Thanks to
-* [图灵机器人](http://www.tuling123.com/)
+* [Turing](http://www.tuling123.com/)
 * [Google](https://github.com/googlesamples)-[android-architecture
 ](https://github.com/googlesamples/android-architecture)
 * Other people who helped me solve the problem 
