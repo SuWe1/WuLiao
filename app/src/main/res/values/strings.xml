@@ -9,6 +9,7 @@
     <string name="nac_setting">设置</string>
     <string name="nav_anout">关于我</string>
     <string name="nav_menu_search_word">词典</string>
+    <string name="nav_menu_one">One一个</string>
     <string name="edit_hint">Type something to send...</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -47,6 +48,8 @@
     <string name="about_email">我的联系方式</string>
     <string name="about_thank">致谢</string>
     <string name="anout_thank_gank">致谢开发过程中指点迷津的人</string>
+    <string name="about_Technical_support">支持</string>
+    <string name="about_xfyun_support">语音技术由科大讯飞提供</string>
 
 
     <string name="copied_to_clipboard">复制成功</string>

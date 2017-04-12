@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
-    public static final String ACTION_SEARCH_WORD="com.wuliao.search";
+    public static final String ACTION_SEARCH_WORD="com.wuliao.one";
 
 
     @Override
@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         String action=getIntent().getAction();
         if (action.equals(ACTION_SEARCH_WORD)){
-//            navigationView.setCheckedItem(R.id.nav_search_word);
+            showOneFragment();
+//            navigationView.setCheckedItem(R.id.nav_one);
         }else {
             showMainFragment();
             navigationView.setCheckedItem(R.id.nav_robot);
@@ -79,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.commit();
         toolbar.setTitle(R.string.robot_name);
     }
+    private void showOneFragment(){
+
+    }
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
@@ -95,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id=item.getItemId();
         if (id==R.id.nav_robot){
             showMainFragment();
-        }/*else if (id==R.id.nav_search_word){
+        }/*else if (id==R.id.nav_one){
 
         }*/else if (id==R.id.nav_change_theme){
             drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {

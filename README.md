@@ -41,4 +41,5 @@ Finally open the wuliao/ directory in Android Studio
 * [Turing](http://www.tuling123.com/)
 * [Google](https://github.com/googlesamples)-[android-architecture
 ](https://github.com/googlesamples/android-architecture)
+* [xfyun](http://www.xfyun.cn/)
 * Other people who helped me solve the problem 

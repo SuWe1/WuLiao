@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <PreferenceCategory android:title="@string/app_name">
         <Preference android:title="@string/app_name"/>
@@ -15,6 +16,8 @@
             android:key="commit_bug"/>
         <Preference android:title="@string/about_email"
             android:summary="@string/about_commit_bug"/>
+        <Preference android:title="@string/about_Technical_support"
+            android:summary="@string/about_xfyun_support" />
         <Preference android:title="@string/about_thank"
             android:summary="@string/anout_thank_gank"/>
     </PreferenceCategory>

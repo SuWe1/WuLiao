@@ -42,4 +42,5 @@ Note:如果需要查看其它分支，请将master替换为其它分支的名称
 * [图灵机器人](http://www.tuling123.com/)
 * [Google](https://github.com/googlesamples)-[android-architecture
 ](https://github.com/googlesamples/android-architecture)
+* [讯飞开放平台](http://www.xfyun.cn/)
 * 开发过程中热心为我解答的人
