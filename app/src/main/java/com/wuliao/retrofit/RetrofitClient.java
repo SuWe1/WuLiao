@@ -12,7 +12,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static String baseTuringUrl="http://www.tuling123.com/";
+    private static String baseOneUrl="http://v3.wufazhuce.com:8000/";
     private static TuringApi turingApi;
+    private static OneApi oneApi;
 
     private static Converter.Factory gsonConverterFactory= GsonConverterFactory.create();
     private static CallAdapter.Factory rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create();
@@ -28,5 +30,17 @@ public class RetrofitClient {
             turingApi=retrofit.create(TuringApi.class);
         }
         return turingApi;
+    }
+
+    public static OneApi getOneApi(){
+        if (oneApi==null){
+            Retrofit retrofit=new  Retrofit.Builder()
+                    .baseUrl(baseOneUrl)
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .build();
+            oneApi=retrofit.create(OneApi.class);
+        }
+        return oneApi;
     }
 }
