@@ -11,101 +11,111 @@
     app:cardElevation="1dp"
     app:cardPreventCornerOverlap="true"
     >
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/one_list_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/one_list_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="到纽约找鲍勃·迪伦"
-                android:textSize="22sp"
-                android:textColor="#263238"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:text="到纽约找鲍勃·迪伦"
+                android:textColor="#263238"
+                android:textSize="22sp" />
+
             <TextView
                 android:id="@+id/one_list_author"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="文 / 肖复兴"
-                android:textSize="20sp"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"/>
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:text="文 / 肖复兴"
+                android:textSize="20sp" />
+
             <ImageView
                 android:id="@+id/one_list_Img"
                 android:layout_width="match_parent"
                 android:layout_height="144dp"
-                android:background="@drawable/one_ceshi"
-                android:layout_marginTop="30dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/one_ceshi" />
+
             <TextView
                 android:id="@+id/one_list_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="鲍勃·迪伦曾经这样说过：“民谣在我的脑海里响着，它们总是这么响起。民谣是个地下故事。”"
-                android:textSize="18sp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="20dp"
-                />
+                android:text="鲍勃·迪伦曾经这样说过：“民谣在我的脑海里响着，它们总是这么响起。民谣是个地下故事。”"
+                android:textSize="18sp" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="24dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
             android:layout_below="@+id/one_list_content"
-            >
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/one_list_time"
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:text="8小时前"
-                android:textSize="15sp"
+                android:layout_marginLeft="20dp"
                 android:gravity="center"
-                android:layout_marginLeft="20dp"/>
+                android:text="8小时前"
+                android:textSize="15sp" />
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="24dp"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="center_vertical">
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp">
+
                 <TextView
                     android:id="@+id/one_list_likecount"
-                    android:layout_toLeftOf="@+id/one_list_likeimg"
                     android:layout_width="wrap_content"
                     android:layout_height="24dp"
-                    android:textSize="15sp"
+                    android:layout_toLeftOf="@+id/one_list_likeimg"
                     android:gravity="center"
-                    android:text="899"/>
+                    android:text="899"
+                    android:textSize="15sp" />
+
                 <ImageView
                     android:id="@+id/one_list_likeimg"
-                    android:layout_toLeftOf="@+id/one_list_dot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_like"
-                    android:layout_marginLeft="2dp"/>
+                    android:layout_marginLeft="2dp"
+                    android:layout_toLeftOf="@+id/one_list_dot"
+                    android:background="@drawable/ic_like" />
+
                 <ImageView
                     android:id="@+id/one_list_dot"
-                    android:layout_toLeftOf="@+id/one_list_share"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_dot"/>
+                    android:layout_toLeftOf="@+id/one_list_share"
+                    android:background="@drawable/ic_dot" />
+
                 <ImageView
                     android:id="@+id/one_list_share"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_share"
                     android:layout_alignParentRight="true"
-                    />
+                    android:background="@drawable/ic_share" />
             </RelativeLayout>
 
         </LinearLayout>

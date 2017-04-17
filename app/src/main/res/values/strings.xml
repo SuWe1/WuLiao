@@ -63,4 +63,7 @@
     <string name="sure">肯定</string>
     <string name="yes">必须</string>
     <string name="no_app_store_found">没有邮件类App</string>
+
+    <string name="one_version">4.0.2</string>
+    <string name="one">一个</string>
 </resources>

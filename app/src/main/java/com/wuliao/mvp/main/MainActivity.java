@@ -22,13 +22,15 @@ import android.view.View;
 import com.wuliao.R;
 import com.wuliao.mvp.about.AboutPreferenceActivity;
 import com.wuliao.mvp.setting.SettingActivity;
+import com.wuliao.one.OneFragment;
+import com.wuliao.one.OnePresenter;
 
 import static com.wuliao.mvp.main.MainPresenter.REQUEST_PERMISSION_CAMERA_CODE;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private MainFragment mainFragment;
-
+    private OneFragment oneFragment;
 
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
@@ -44,18 +46,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //
         if (savedInstanceState!=null){
             mainFragment= (MainFragment) getSupportFragmentManager().getFragment(savedInstanceState,"MainFragment");
+            oneFragment= (OneFragment) getSupportFragmentManager().getFragment(savedInstanceState,"oneFragment");
         }else {
             mainFragment=MainFragment.newInstance();
             mainFragment.setContext(this);
+            oneFragment=OneFragment.newInstance();
         }
 
         if (savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().add(R.id.layout_fragment,mainFragment,"MainFragment").commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.layout_fragment,oneFragment,"oneFragment").commit();
         }
+        new OnePresenter(MainActivity.this,oneFragment);
         String action=getIntent().getAction();
         if (action.equals(ACTION_SEARCH_WORD)){
             showOneFragment();
-//            navigationView.setCheckedItem(R.id.nav_one);
+            navigationView.setCheckedItem(R.id.nav_one);
         }else {
             showMainFragment();
             navigationView.setCheckedItem(R.id.nav_robot);
@@ -76,11 +82,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void showMainFragment(){
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
         fragmentTransaction.show(mainFragment);
-//        fragmentTransaction.hide()
+        fragmentTransaction.hide(oneFragment);
         fragmentTransaction.commit();
         toolbar.setTitle(R.string.robot_name);
     }
     private void showOneFragment(){
+        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.show(oneFragment);
+        fragmentTransaction.hide(mainFragment);
+        fragmentTransaction.commit();
+        toolbar.setTitle(R.string.one);
 
     }
 
@@ -91,6 +102,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (mainFragment.isAdded()){
             getSupportFragmentManager().putFragment(outState,"MainFragment",mainFragment);
         }
+        if (oneFragment.isAdded()){
+            getSupportFragmentManager().putFragment(outState,"oneFragment",oneFragment);
+        }
     }
 
     @Override
@@ -99,9 +113,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id=item.getItemId();
         if (id==R.id.nav_robot){
             showMainFragment();
-        }/*else if (id==R.id.nav_one){
-
-        }*/else if (id==R.id.nav_change_theme){
+        }else if (id==R.id.nav_one){
+            showOneFragment();
+        }else if (id==R.id.nav_change_theme){
             drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
                 @Override
                 public void onDrawerSlide(View drawerView, float slideOffset) {

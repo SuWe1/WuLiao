@@ -13,11 +13,11 @@ import java.util.ArrayList;
 public interface OneContract {
     interface Presenter extends BasePresenter{
         // 请求数据
-        void loadPosts(int PagerNum, boolean cleaing);
+        void loadPosts(boolean cleaing);
         //刷新数据
         void  reflush();
         //加载更多
-        void loadMore(int PagerNum);
+        void loadMore();
         //显示详情
         void StartReading(int positon);
     }
