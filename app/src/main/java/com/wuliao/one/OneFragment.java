@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 import com.wuliao.R;
 import com.wuliao.adapter.OneAdapter;
 import com.wuliao.interfaze.OnRecyclerViewOnClickListener;
-import com.wuliao.source.OneBean;
+import com.wuliao.source.one.OneBean;
 
 import java.util.ArrayList;
 

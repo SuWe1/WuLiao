@@ -4,27 +4,10 @@
     android:id="@+id/one_coordinatorlayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:layout_margin="0dp"
-        app:elevation="0dp">
-
-        <android.support.design.widget.TabLayout
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:tabIndicatorColor="@android:color/white"
-            app:tabGravity="fill"
-            android:id="@+id/tab_layout" />
-
-    </android.support.design.widget.AppBarLayout>
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/one_refreshlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize">
+        android:layout_height="match_parent">
         <FrameLayout
             android:focusable="true"
             android:clickable="true"

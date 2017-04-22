@@ -2,7 +2,7 @@ package com.wuliao.one;
 
 import com.wuliao.mvp.BasePresenter;
 import com.wuliao.mvp.BaseView;
-import com.wuliao.source.OneBean;
+import com.wuliao.source.one.OneBean;
 
 import java.util.ArrayList;
 

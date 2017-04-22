@@ -1,7 +1,8 @@
 package com.wuliao.retrofit;
 
-import com.wuliao.source.OneBean;
+import com.wuliao.source.one.One;
 
+import okhttp3.ResponseBody;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
@@ -13,6 +14,9 @@ import rx.Observable;
 public interface OneApi {
 
     @GET("api/channel/reading/more/0")
-    Observable<OneBean> getOneResponse(@Query("channel")String channel,@Query("version")String version,
-                                       @Query("uuid")String uuid,@Query("platform")String platform);
+    Observable<One> getOneResponse(@Query("channel")String channel, @Query("version")String version,
+                                   @Query("uuid")String uuid, @Query("platform")String platform);
+    @GET("api/channel/reading/more/0")
+    Observable<ResponseBody> getOneResponseBody(@Query("channel")String channel, @Query("version")String version,
+                                                @Query("uuid")String uuid, @Query("platform")String platform);
 }

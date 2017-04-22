@@ -1,4 +1,4 @@
-package com.wuliao.source;
+package com.wuliao.source.one;
 
 /**
  * Created by Swy on 2017/4/16.
@@ -30,7 +30,16 @@ public class OneBean {
     private int like_count;
     private String post_date;
     private String last_update_date;
+    private String share_url;
     private AuthorBean author;
+
+    public String getShare_url() {
+        return share_url;
+    }
+
+    public void setShare_url(String share_url) {
+        this.share_url = share_url;
+    }
 
     public String getId() {
         return id;

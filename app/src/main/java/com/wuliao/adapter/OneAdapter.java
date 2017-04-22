@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.wuliao.R;
 import com.wuliao.interfaze.OnRecyclerViewOnClickListener;
-import com.wuliao.source.OneBean;
+import com.wuliao.source.one.OneBean;
 
 import java.util.ArrayList;
 
@@ -53,9 +53,13 @@ public class OneAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             ((NormalViewHolder) holder).one_list_title.setText(item.getTitle());
             ((NormalViewHolder) holder).one_list_author.setText("文 / "+item.getAuthor().getUser_name());
             ((NormalViewHolder) holder).one_list_text.setText(item.getForward());
-            String time=item.getPost_date().substring(0,10);
+//            String time=item.getPost_date().substring(0,10);
             ((NormalViewHolder) holder).one_list_time.setText(item.getPost_date());
-            ((NormalViewHolder) holder).one_list_likecount.setText(item.getLike_count());
+            /** setText(item.getLike_count()) ==>  setText(String.valueOf(item.getLike_count()))
+             * There are different versions of setText - one takes a String and one takes an int resource id.
+             * If you pass it an integer it will try to look for the corresponding string resource id - which it can't find, which is your error.
+             */
+            ((NormalViewHolder) holder).one_list_likecount.setText(String.valueOf(item.getLike_count()));
         }
     }
 
