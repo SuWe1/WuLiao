@@ -28,15 +28,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--设置 Android:noHistory="true"后，该Activity在statck中不留历史痕迹。默认的值是false。-->
         <activity
-            android:name=".mvp.main.MainActivity"
-            android:label="@string/app_name">
+            android:name=".mvp.welcome.WelcomeActivity"
+            android:noHistory="true"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".mvp.main.MainActivity"
+            android:label="@string/app_name"/>
         <activity android:name=".mvp.setting.SettingActivity"/>
         <activity android:name=".mvp.detail.url.WebActivity"/>
         <activity android:name=".mvp.about.AboutPreferenceActivity"/>

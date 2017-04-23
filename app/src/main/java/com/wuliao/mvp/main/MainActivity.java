@@ -35,8 +35,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
-    public static final String ACTION_SEARCH_WORD="com.wuliao.one";
 
+
+    public static final String ACTION_ONE_PAGE ="com.wuliao.one";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,14 +59,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().add(R.id.layout_fragment,oneFragment,"oneFragment").commit();
         }
         new OnePresenter(MainActivity.this,oneFragment);
-        String action=getIntent().getAction();
-        if (action.equals(ACTION_SEARCH_WORD)){
+        navigationView.setCheckedItem(R.id.nav_robot);
+        /*String action=getIntent().getAction();
+        if (action.equals(ACTION_ONE_PAGE)){
             showOneFragment();
             navigationView.setCheckedItem(R.id.nav_one);
         }else {
             showMainFragment();
             navigationView.setCheckedItem(R.id.nav_robot);
-        }
+        }*/
     }
 
     private void initView(){

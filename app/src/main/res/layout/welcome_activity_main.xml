@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    tools:context=".mvp.welcome.WelcomeActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="?attr/actionBarSize"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <!--分割线-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="?attr/actionBarSize"
+        android:alpha="0.12"
+        android:background="@android:color/white" />
+
+    <!--底部左右切换导航-->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin" >
+    <!--zuo按钮  默认不显示-->
+    <ImageButton
+        android:id="@+id/imgbtnpre"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center"
+        android:contentDescription="@string/onboarding_pre_button_description"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:src="@drawable/wel_chevron_left_black_24dp"
+        android:tint="@android:color/white"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgIndicator0"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/wel_onboarding_indicator_selected" />
+
+        <ImageView
+            android:id="@+id/imgIndicator1"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_margin="@dimen/appbar_padding_top"
+            android:background="@drawable/wel_onboarding_indicator_unselected" />
+
+        <ImageView
+            android:id="@+id/imgIndicator2"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/wel_onboarding_indicator_unselected" />
+    </LinearLayout>
+    <!--跳过按钮-->
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnFinish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|end"
+        android:contentDescription="@string/onboarding_finish_button_description"
+        android:text="@string/onboarding_finish_button_description"
+        android:textColor="@android:color/white"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/imgbtnNext"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center"
+        android:contentDescription="@string/onboarding_next_button_description"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:src="@drawable/wel_chevron_right_black_24dp"
+        android:tint="@android:color/white" />
+    </FrameLayout>
+
+</android.support.design.widget.CoordinatorLayout>

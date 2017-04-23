@@ -39,18 +39,23 @@ public class OneFragment extends Fragment implements OneContract.View {
         return new OneFragment();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.one_list,container,false);
         initView(view);
-        presenter.loadPosts(true);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 presenter.reflush();
             }
         });
+        presenter.loadPosts(true);
         return view;
     }
 

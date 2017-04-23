@@ -86,17 +86,10 @@ public class OnePresenter implements OneContract.Presenter {
     public void loadPosts(boolean cleaing) {
         if (cleaing) {
             view.showLoading();
+        }else {
+            list.clear();
         }
         subscribe();
-//        OneBean onbean=new OneBean();
-//        onbean.setTitle("frist");
-//        OneBean.AuthorBean authorBean=new OneBean.AuthorBean();
-//        authorBean.setUser_name("xiaoye");
-//        onbean.setAuthor(authorBean);
-//        onbean.setForward("123");
-//        onbean.setPost_date("2014");
-//        onbean.setLike_count(50);
-//        list.add(onbean);
         view.showResult(list);
         view.Stoploading();
     }
