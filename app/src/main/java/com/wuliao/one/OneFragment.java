@@ -24,6 +24,7 @@ import java.util.ArrayList;
  */
 
 public class OneFragment extends Fragment implements OneContract.View {
+    private static final String TAG = "OneFragment";
     private OneContract.Presenter presenter;
 
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -49,15 +50,16 @@ public class OneFragment extends Fragment implements OneContract.View {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.one_list,container,false);
         initView(view);
+        presenter.loadMore();
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 presenter.reflush();
             }
         });
-        presenter.loadPosts(true);
         return view;
     }
+
 
     @Override
     public void initView(View view) {

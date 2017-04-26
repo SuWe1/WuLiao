@@ -25,5 +25,7 @@ public interface WebContract {
         // 显示已复制文字内容
         void showTextCopied();
         void showResultInWebView(String url);
+        //隐藏网页标题栏
+        void hideInternetTitle();
     }
 }

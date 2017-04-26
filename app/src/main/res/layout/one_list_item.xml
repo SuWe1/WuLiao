@@ -46,7 +46,7 @@
             <ImageView
                 android:id="@+id/one_list_Img"
                 android:layout_width="match_parent"
-                android:layout_height="144dp"
+                android:layout_height="225dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="30dp"

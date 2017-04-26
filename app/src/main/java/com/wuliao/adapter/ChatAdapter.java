@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.wuliao.R;
+import com.wuliao.app.BeanTypes;
 import com.wuliao.interfaze.OnRecyclerViewOnClickListener;
 import com.wuliao.mvp.detail.url.WebActivity;
 import com.wuliao.source.ChatBean;
@@ -98,6 +99,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                             Intent intent=new Intent(context, WebActivity.class);
                             intent.putExtra("url",item.getUrl());
                             intent.putExtra("title",item.getText());
+                            intent.putExtra("type", BeanTypes.TYPE_CHAT);
                             /**
                              * Content的startActivity方法，需要开启一个新的task。如果使用 Activity的startActivity方法，
                              * 不会有任何限制，因为Activity继承自Context，重载了startActivity方法。

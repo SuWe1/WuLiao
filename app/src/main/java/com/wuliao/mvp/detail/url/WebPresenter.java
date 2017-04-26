@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
+import com.wuliao.app.BeanTypes;
+
 /**
  * Created by Swy on 2017/4/4.
  */
@@ -16,6 +18,15 @@ public class WebPresenter implements WebContract.Presenter {
 
     private String url;
     private String title;
+    private BeanTypes type;
+
+    public BeanTypes getType() {
+        return type;
+    }
+
+    public void setType(BeanTypes type) {
+        this.type = type;
+    }
 
     public String getTitle() {
         return title;
@@ -51,6 +62,9 @@ public class WebPresenter implements WebContract.Presenter {
 
     @Override
     public void load() {
+        if (type== BeanTypes.TYPE_ONE){
+            view.hideInternetTitle();
+        }
         if (url==null){
             view.showLoadingError();
             return;

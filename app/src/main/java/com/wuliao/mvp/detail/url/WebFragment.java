@@ -16,6 +16,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -145,6 +146,35 @@ public class WebFragment extends Fragment implements WebContract.View {
 
 
     @Override
+    public void hideInternetTitle() {
+        webView.setWebChromeClient(new MyWebChromeClient());
+    }
+
+    private class MyWebChromeClient extends WebChromeClient{
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+            super.onProgressChanged(view, newProgress);
+            //页面加载到5%的时候 注入JS来隐藏导航栏
+            if (newProgress>5){
+                hideTitle(view);
+            }
+        }
+
+        private void hideTitle(WebView webView){
+            webView.loadUrl("javascript:(function() " +
+                    "{ " +
+                    "document.querySelectorAll('.header')[0].style.display='none';"+
+                    "})()");
+            //document.getElementsByClassName('header')[0].style.display='none';
+        }
+    }
+
+    @Override
+    public void showResultInWebView(String url) {
+        webView.loadUrl(url);
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         webView.removeAllViews();
@@ -178,7 +208,6 @@ public class WebFragment extends Fragment implements WebContract.View {
             this.presenter=presenter;
         }
     }
-
     @Override
     public void showLoadingError() {
         Snackbar.make(coordinator,R.string.loaded_failed,Snackbar.LENGTH_INDEFINITE)
@@ -189,6 +218,7 @@ public class WebFragment extends Fragment implements WebContract.View {
                     }
                 }).show();
     }
+
     @Override
     public void setTitle(String title) {
         mToolbar.setTitle(title);
@@ -198,18 +228,14 @@ public class WebFragment extends Fragment implements WebContract.View {
     public void showNotNetError() {
         Snackbar.make(coordinator,R.string.not_net_work,Snackbar.LENGTH_SHORT).show();
     }
-
     @Override
     public void showBrowserNotFoundError() {
         Snackbar.make(coordinator, R.string.no_browser_found,Snackbar.LENGTH_SHORT).show();
     }
+
     @Override
     public void showTextCopied() {
         Snackbar.make(coordinator, R.string.copied_to_clipboard, Snackbar.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void showResultInWebView(String url) {
-        webView.loadUrl(url);
-    }
 }

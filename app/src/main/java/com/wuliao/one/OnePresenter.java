@@ -1,8 +1,11 @@
 package com.wuliao.one;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
+import com.wuliao.app.BeanTypes;
+import com.wuliao.mvp.detail.url.WebActivity;
 import com.wuliao.retrofit.RetrofitClient;
 import com.wuliao.source.one.One;
 import com.wuliao.source.one.OneBean;
@@ -74,7 +77,6 @@ public class OnePresenter implements OneContract.Presenter {
         } else {
             view.showNotNetError();
         }
-        view.Stoploading();
     }
 
     @Override
@@ -89,8 +91,11 @@ public class OnePresenter implements OneContract.Presenter {
         }else {
             list.clear();
         }
+        Log.i(TAG, "loadPosts is success 1");
         subscribe();
+        Log.i(TAG, "loadPosts is success 2");
         view.showResult(list);
+        Log.i(TAG, "loadPosts is success 3");
         view.Stoploading();
     }
 
@@ -102,11 +107,16 @@ public class OnePresenter implements OneContract.Presenter {
 
     @Override
     public void loadMore() {
-
+        loadPosts(true);
     }
 
     @Override
     public void StartReading(int positon) {
-
+        OneBean oneBean=list.get(positon);
+        Intent intent=new Intent(context, WebActivity.class);
+        intent.putExtra("url",oneBean.getShare_url());
+        intent.putExtra("title",oneBean.getTitle());
+        intent.putExtra("type", BeanTypes.TYPE_ONE);
+        context.startActivity(intent);
     }
 }
