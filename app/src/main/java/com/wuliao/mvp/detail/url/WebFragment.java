@@ -129,6 +129,17 @@ public class WebFragment extends Fragment implements WebContract.View {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setBuiltInZoomControls(false);//缩放,设置为不能缩放可以防止页面上出现放大和缩小的图标
         webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+        /*if (NetworkUtil.networkConnected(context)){
+            webView.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
+        }else {
+            webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        }
+        webView.getSettings().setDomStorageEnabled(true); // 开启 DOM storage API 功能
+        webView.getSettings().setDatabaseEnabled(true);   //开启 database storage API 功能
+        webView.getSettings().setAppCacheEnabled(true);//开启 Application Caches 功能
+
+        String cacheDirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "webviewcache";
+        webView.getSettings().setAppCachePath(cacheDirPath); //设置  Application Caches 缓存目录*/
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setAppCacheEnabled(true);
         webView.setWebViewClient(new WebViewClient(){
@@ -164,6 +175,7 @@ public class WebFragment extends Fragment implements WebContract.View {
             webView.loadUrl("javascript:(function() " +
                     "{ " +
                     "document.querySelectorAll('.header')[0].style.display='none';"+
+                    "document.querySelectorAll('.text-title')[0].style.marginTop='0px';"+
                     "})()");
             //document.getElementsByClassName('header')[0].style.display='none';
         }

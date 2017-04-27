@@ -4,7 +4,7 @@ package com.wuliao.source.one;
  * Created by Swy on 2017/4/16.
  */
 
-public class OneBean {
+public class OneBean{
 
     /**
      * id : 11166
