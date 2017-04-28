@@ -1,10 +1,14 @@
 package com.wuliao.source.one;
 
+import io.realm.RealmObject;
+import io.realm.annotations.Ignore;
+import io.realm.annotations.PrimaryKey;
+
 /**
  * Created by Swy on 2017/4/16.
  */
 
-public class OneBean{
+public class OneBean extends RealmObject{
 
     /**
      * id : 11166
@@ -20,8 +24,11 @@ public class OneBean{
      * author : {"user_id":"7784221","user_name":"理想国imaginist","desc":"知名文化品牌\u201c理想国\u201d旗下微信公号。想象文化与生活的另一种可能。","wb_name":"","is_settled":"0","settled_type":"0","summary":"id：lixiangguo2013","fans_total":"828","web_url":"http://image.wufazhuce.com/FqwlLLGAIhgRlE4wh2_8V4WhJ0Q9"}
      */
 
+    @PrimaryKey
     private String id;
+    @Ignore
     private String category;
+    @Ignore
     private int display_category;
     private String item_id;
     private String title;
@@ -29,6 +36,7 @@ public class OneBean{
     private String img_url;
     private int like_count;
     private String post_date;
+    @Ignore
     private String last_update_date;
     private String share_url;
     private AuthorBean author;
@@ -129,99 +137,4 @@ public class OneBean{
         this.author = author;
     }
 
-    public static class AuthorBean {
-        /**
-         * user_id : 7784221
-         * user_name : 理想国imaginist
-         * desc : 知名文化品牌“理想国”旗下微信公号。想象文化与生活的另一种可能。
-         * wb_name :
-         * is_settled : 0
-         * settled_type : 0
-         * summary : id：lixiangguo2013
-         * fans_total : 828
-         * web_url : http://image.wufazhuce.com/FqwlLLGAIhgRlE4wh2_8V4WhJ0Q9
-         */
-
-        private String user_id;
-        private String user_name;
-        private String desc;
-        private String wb_name;
-        private String is_settled;
-        private String settled_type;
-        private String summary;
-        private String fans_total;
-        private String web_url;
-
-        public String getUser_id() {
-            return user_id;
-        }
-
-        public void setUser_id(String user_id) {
-            this.user_id = user_id;
-        }
-
-        public String getUser_name() {
-            return user_name;
-        }
-
-        public void setUser_name(String user_name) {
-            this.user_name = user_name;
-        }
-
-        public String getDesc() {
-            return desc;
-        }
-
-        public void setDesc(String desc) {
-            this.desc = desc;
-        }
-
-        public String getWb_name() {
-            return wb_name;
-        }
-
-        public void setWb_name(String wb_name) {
-            this.wb_name = wb_name;
-        }
-
-        public String getIs_settled() {
-            return is_settled;
-        }
-
-        public void setIs_settled(String is_settled) {
-            this.is_settled = is_settled;
-        }
-
-        public String getSettled_type() {
-            return settled_type;
-        }
-
-        public void setSettled_type(String settled_type) {
-            this.settled_type = settled_type;
-        }
-
-        public String getSummary() {
-            return summary;
-        }
-
-        public void setSummary(String summary) {
-            this.summary = summary;
-        }
-
-        public String getFans_total() {
-            return fans_total;
-        }
-
-        public void setFans_total(String fans_total) {
-            this.fans_total = fans_total;
-        }
-
-        public String getWeb_url() {
-            return web_url;
-        }
-
-        public void setWeb_url(String web_url) {
-            this.web_url = web_url;
-        }
-    }
 }

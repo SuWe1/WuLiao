@@ -175,7 +175,7 @@ public class WebFragment extends Fragment implements WebContract.View {
             webView.loadUrl("javascript:(function() " +
                     "{ " +
                     "document.querySelectorAll('.header')[0].style.display='none';"+
-                    "document.querySelectorAll('.text-title')[0].style.marginTop='0px';"+
+                    "document.querySelectorAll('.text-title')[0].style.marginTop='20px';"+
                     "})()");
             //document.getElementsByClassName('header')[0].style.display='none';
         }

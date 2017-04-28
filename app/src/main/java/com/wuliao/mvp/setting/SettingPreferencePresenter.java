@@ -3,9 +3,15 @@ package com.wuliao.mvp.setting;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.preference.Preference;
+import android.util.Log;
 
 import com.wuliao.R;
 import com.wuliao.app.App;
+import com.wuliao.realm.RealmHelper;
+import com.wuliao.source.one.OneBean;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 
 /**
  * Created by Swy on 2017/4/4.
@@ -13,10 +19,12 @@ import com.wuliao.app.App;
 
 public class SettingPreferencePresenter implements SettingContract.Presenter {
 
+    private static final String TAG = "SettingPreferencePresen";
     private Context context;
     private SharedPreferences sp;
     private SettingContract.View view;
     private SharedPreferences.Editor editor;
+    private Realm realm;
 
     public SettingPreferencePresenter(Context context, SettingContract.View view) {
         this.context = context;
@@ -24,6 +32,7 @@ public class SettingPreferencePresenter implements SettingContract.Presenter {
         this.view.setPresenter(this);
         sp =context.getSharedPreferences("user_setting",Context.MODE_PRIVATE);
         editor=sp.edit();
+        realm= RealmHelper.newRealmInstance();
     }
 
     @Override
@@ -67,7 +76,16 @@ public class SettingPreferencePresenter implements SettingContract.Presenter {
 
     @Override
     public void cleanCache() {
-
+        final RealmResults<OneBean> results=realm.where(OneBean.class).findAll();
+        //realm对数据的所有处理都必须在事务中进行
+        realm.executeTransaction(new Realm.Transaction() {
+            @Override
+            public void execute(Realm realm) {
+                results.deleteAllFromRealm();
+            }
+        });
+        Log.i(TAG, "cleanCache is success");
+        view.showCleanCacheSuccess();
     }
 
     @Override

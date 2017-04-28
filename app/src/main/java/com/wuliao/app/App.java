@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatDelegate;
 import com.iflytek.cloud.SpeechConstant;
 import com.iflytek.cloud.SpeechUtility;
 
+import io.realm.Realm;
+
 /**
  * Created by Swy on 2017/4/3.
  */
@@ -15,6 +17,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Realm.init(this);
         SpeechUtility.createUtility(App.this, SpeechConstant.APPID+"=58dce383");
         if (getSharedPreferences("user_setting",MODE_PRIVATE).getBoolean("voiceIsOpen",true)){
             VOICE_IS_OPEN=true;
