@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -21,23 +22,25 @@ import android.view.View;
 
 import com.wuliao.R;
 import com.wuliao.mvp.about.AboutPreferenceActivity;
+import com.wuliao.mvp.one.OneFragment;
+import com.wuliao.mvp.one.OnePresenter;
 import com.wuliao.mvp.setting.SettingActivity;
-import com.wuliao.one.OneFragment;
-import com.wuliao.one.OnePresenter;
 
 import static com.wuliao.mvp.main.MainPresenter.REQUEST_PERMISSION_CAMERA_CODE;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private static final String TAG = "MainActivity";
     private MainFragment mainFragment;
     private OneFragment oneFragment;
 
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
+    private AppBarLayout appbarLayout;
 
 
-    public static final String ACTION_ONE_PAGE ="com.wuliao.one";
+    public static final String ACTION_ONE_PAGE ="com.wuliao.mvp.one";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,15 +62,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().add(R.id.layout_fragment,oneFragment,"oneFragment").commit();
         }
         new OnePresenter(MainActivity.this,oneFragment);
-        navigationView.setCheckedItem(R.id.nav_robot);
-        /*String action=getIntent().getAction();
-        if (action.equals(ACTION_ONE_PAGE)){
+
+        /**
+         * issue:解决聊天页面toolbar滑动的问题
+         *
+         */
+        AppBarLayout.LayoutParams params= (AppBarLayout.LayoutParams) appbarLayout.getChildAt(0).getLayoutParams();
+        String action=getIntent().getAction();
+        /**
+         * 解决fragment重叠的问题
+         */
+        if (action!=null && action.equals(ACTION_ONE_PAGE)){
             showOneFragment();
             navigationView.setCheckedItem(R.id.nav_one);
+            params.setScrollFlags(AppBarLayout.LayoutParams.SCROLL_FLAG_SCROLL);
         }else {
             showMainFragment();
             navigationView.setCheckedItem(R.id.nav_robot);
-        }*/
+            //设置不滑动
+            params.setScrollFlags(0);
+        }
     }
 
     private void initView(){
@@ -79,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
         navigationView= (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        appbarLayout= (AppBarLayout) findViewById(R.id.main_appbarlayout);
     }
 
     private void showMainFragment(){

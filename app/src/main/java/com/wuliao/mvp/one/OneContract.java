@@ -1,4 +1,4 @@
-package com.wuliao.one;
+package com.wuliao.mvp.one;
 
 import com.wuliao.mvp.BasePresenter;
 import com.wuliao.mvp.BaseView;
