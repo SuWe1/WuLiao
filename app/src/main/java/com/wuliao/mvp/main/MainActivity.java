@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.show(mainFragment);
         fragmentTransaction.hide(oneFragment);
         fragmentTransaction.commit();
-        toolbar.setTitle(R.string.robot_name);
+        toolbar.setTitle(R.string.app_name);
     }
     private void showOneFragment(){
         FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
@@ -94,6 +94,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentTransaction.hide(mainFragment);
         fragmentTransaction.commit();
         toolbar.setTitle(R.string.one);
+        //第一次加载和以后重新点击时会调用这一步
+        if (oneFragment.isAdded()){
+            oneFragment.notifyDataChanged();
+        }
 
     }
 

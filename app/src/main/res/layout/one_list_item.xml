@@ -100,10 +100,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="2dp"
-                    android:layout_toLeftOf="@+id/one_list_dot"
+                    android:layout_alignParentRight="true"
                     android:background="@drawable/ic_like" />
 
-                <ImageView
+                <!--<ImageView
                     android:id="@+id/one_list_dot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/ic_share" />
+                    android:background="@drawable/ic_share" />-->
             </RelativeLayout>
 
         </LinearLayout>

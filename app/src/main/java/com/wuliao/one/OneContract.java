@@ -27,5 +27,6 @@ public interface OneContract {
         void Stoploading();
         void showResult(ArrayList<OneBean> list);
         void showNotNetError();
+        void notifyDataChanged();
     }
 }

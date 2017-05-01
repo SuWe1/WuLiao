@@ -73,6 +73,12 @@ public class OneFragment extends Fragment implements OneContract.View {
     }
 
     @Override
+    public void notifyDataChanged() {
+        presenter.loadPosts(false);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
     public void setPresenter(OneContract.Presenter presenter) {
         if (presenter!=null){
             this.presenter=presenter;
