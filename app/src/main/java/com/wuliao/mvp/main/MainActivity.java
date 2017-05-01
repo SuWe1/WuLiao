@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         AppBarLayout.LayoutParams params= (AppBarLayout.LayoutParams) appbarLayout.getChildAt(0).getLayoutParams();
         String action=getIntent().getAction();
         /**
-         * 解决fragment重叠的问题
+         * issue:解决fragment重叠的问题
          */
         if (action!=null && action.equals(ACTION_ONE_PAGE)){
             showOneFragment();
