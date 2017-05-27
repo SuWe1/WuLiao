@@ -28,7 +28,7 @@ Note:如果需要查看其它分支，请将master替换为其它分支的名称
 最后在Android Studio中打开wuliao/目录。
 
 ### 下载
-(暂未上线)
+[酷安](http://www.coolapk.com/apk/com.wuliao)
 
 ### 相关开源项目
 
